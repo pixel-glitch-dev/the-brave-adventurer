@@ -19,14 +19,17 @@ prevBtn.addEventListener("click", () => {
   updateSlide();
 });
 
-/* Swipe support for mobile */
+/* Swipe support */
 let startX = 0;
-slides.addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-});
-
+slides.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
 slides.addEventListener("touchend", (e) => {
-  let endX = e.changedTouches[0].clientX;
+  const endX = e.changedTouches[0].clientX;
   if (startX - endX > 50) nextBtn.click(); // swipe left
   if (endX - startX > 50) prevBtn.click(); // swipe right
 });
+
+/* Optional: Auto-slide every 5s */
+setInterval(() => {
+  index = (index + 1) % images.length;
+  updateSlide();
+}, 5000);
