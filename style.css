@@ -1,106 +1,60 @@
-/* General page styling */
 body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
-  background-color: #111;
-  color: #fff;
+  font-family: Arial, sans-serif;
+  background-color: #1e1e1e;
+  color: white;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 
-/* Header section */
-header {
-  background: linear-gradient(90deg, #6b1ac9, #a826a8);
-  padding: 40px 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-header h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.tagline {
-  font-size: 1.2rem;
-  color: #ddd;
-}
-
-/* Screenshot section */
-.screenshots {
-  margin: 50px auto;
-  max-width: 1000px;
-}
-
-.screenshots h2 {
+.title {
+  margin-top: 30px;
   font-size: 2rem;
-  margin-bottom: 20px;
 }
 
-.gallery {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.gallery img {
-  width: 300px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* Description */
-.description {
+.slider {
+  position: relative;
+  width: 80%;
   max-width: 800px;
   margin: 50px auto;
-  padding: 0 20px;
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #ccc;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Download section */
-.download {
-  margin: 60px auto;
+.slides img {
+  width: 100%;
+  display: none;
+  border-radius: 15px;
 }
 
-.download h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.slides img.active {
+  display: block;
 }
 
-.download-btn {
-  display: inline-block;
-  background-color: #28a745;
+button.prev,
+button.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
-  font-size: 1.3rem;
-  padding: 15px 30px;
-  text-decoration: none;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  transition: background-color 0.3s, transform 0.2s;
+  border: none;
+  font-size: 2rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
 }
 
-.download-btn:hover {
-  background-color: #218838;
-  transform: scale(1.05);
+button.prev:hover,
+button.next:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
-.note {
-  color: #aaa;
-  margin-top: 10px;
-  font-size: 0.9rem;
+button.prev {
+  left: 10px;
 }
 
-/* Footer */
-footer {
-  background-color: #1a1a1a;
-  padding: 15px;
-  font-size: 0.9rem;
-  color: #888;
-  margin-top: 50px;
+button.next {
+  right: 10px;
 }
