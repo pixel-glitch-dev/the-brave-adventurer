@@ -1,25 +1,52 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Brave Adventurer</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1 class="title">The Brave Adventurer</h1>
+    <div class="container">
+      <header>
+        <h1>The Brave Adventurer</h1>
+        <p class="tagline">A 2D pixel platformer made for mobile — brave the journey!</p>
+      </header>
 
-    <div class="slider">
-      <button class="prev">&#10094;</button>
+      <!-- ===== Slider Section ===== -->
+      <div class="slider">
+        <button class="arrow left" id="prev">&#10094;</button>
 
-      <div class="slides">
-        <img src="images/screenshot1.png" alt="Screenshot 1" class="active" />
-        <img src="images/screenshot2.png" alt="Screenshot 2" />
-        <img src="images/screenshot3.png" alt="Screenshot 3" />
-        <img src="images/screenshot4.png" alt="Screenshot 4" />
+        <div class="slides">
+          <img src="images/screenshot1.png" alt="Screenshot 1" class="active" />
+          <img src="images/screenshot2.png" alt="Screenshot 2" />
+          <img src="images/screenshot3.png" alt="Screenshot 3" />
+        </div>
+
+        <button class="arrow right" id="next">&#10095;</button>
       </div>
 
-      <button class="next">&#10095;</button>
+      <!-- ===== Description + Download ===== -->
+      <section class="description">
+        <h2>About the Game</h2>
+        <p>
+          Jump, climb, and battle through pixel dungeons in <strong>The Brave Adventurer</strong>! 
+          Designed for mobile, this 2D action platformer lets you explore, collect treasures, 
+          and fight monsters in beautifully hand-crafted pixel worlds.
+        </p>
+      </section>
+
+      <section class="download">
+        <h2>Download Now</h2>
+        <a href="https://github.com/pixel-glitch-dev/the-brave-adventurer/releases/download/v1.0/TheBraveWarriorAdventure.apk" class="download-btn" download>
+          ⬇️ Download APK (v1.0)
+        </a>
+        <p class="note">Available for Android devices only.</p>
+      </section>
+
+      <footer>
+        <p>© 2025 Pixel Glitch Dev — All Rights Reserved</p>
+      </footer>
     </div>
 
     <script src="script.js"></script>
