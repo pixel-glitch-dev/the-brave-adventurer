@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -5,103 +6,132 @@
 }
 
 body {
-  background: #0e0e0e;
+  font-family: "Poppins", sans-serif;
+  background-color: #111;
   color: white;
-  font-family: 'Poppins', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+  text-align: center;
 }
 
+/* Header */
 header {
-  background: #000;
-  width: 100%;
-  text-align: center;
-  padding: 1rem;
+  background-color: #000;
+  padding: 20px;
 }
 
 h1 {
   font-size: 1.8rem;
 }
 
+/* Intro section */
+.intro {
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.intro p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+/* Download button */
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #3ddc84; /* Android green */
+  color: black;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.download-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  background-color: #2ebf6b;
+}
+
+/* Slider */
 .slider {
   position: relative;
-  width: 100%;
+  margin: 30px auto;
+  width: 90%;
   max-width: 600px;
   overflow: hidden;
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 12px;
 }
 
 .slide-container {
-  width: 90%;
+  width: 100%;
   overflow: hidden;
-  border-radius: 10px;
 }
 
 .slides {
   display: flex;
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.4s ease-in-out;
 }
 
 .slides img {
   width: 100%;
-  border-radius: 10px;
-  flex-shrink: 0;
-  object-fit: cover;
+  height: auto;
+  border-radius: 12px;
 }
 
-/* Arrows (side by side with image) */
+/* Arrows */
 .nav {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  padding: 0.5rem 0.8rem;
+  font-size: 2rem;
+  padding: 5px 12px;
   cursor: pointer;
   border-radius: 50%;
-  font-size: 1.5rem;
   z-index: 10;
-  transition: background 0.2s ease;
 }
 
-.prev {
-  left: 5%;
+.nav.prev {
+  left: 10px;
 }
 
-.next {
-  right: 5%;
+.nav.next {
+  right: 10px;
 }
 
 .nav:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Mobile adjustments */
+/* Footer */
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  background-color: #000;
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+/* Mobile support */
 @media (max-width: 600px) {
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
   }
 
-  .slider {
-    max-width: 90%;
+  .download-btn {
+    padding: 10px 16px;
   }
 
   .nav {
-    font-size: 1.2rem;
-    padding: 0.4rem 0.6rem;
-  }
-
-  .prev {
-    left: 2%;
-  }
-
-  .next {
-    right: 2%;
+    font-size: 1.5rem;
   }
 }
