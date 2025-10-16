@@ -5,67 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Brave Adventurer</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
   </head>
   <body>
-    <!-- Navigation -->
     <header>
-      <nav class="navbar">
-        <h1 class="logo">🗡️ The Brave Adventurer</h1>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#download">Download</a></li>
-        </ul>
-      </nav>
+      <h1 class="title">THE BRAVE ADVENTURER</h1>
     </header>
 
-    <!-- Home Section -->
-    <section id="home" class="section">
-      <h2>Welcome, Adventurer!</h2>
-      <p>Embark on a golden journey through pixel dungeons and mysterious lands.</p>
-
-      <div class="carousel-container">
-        <button class="arrow left">&#10094;</button>
-        <div class="carousel">
-          <img src="images/src/assets/screenshot1.png" alt="Screenshot 1" />
-          <img src="images/src/assets/screenshot2.png" alt="Screenshot 2" />
-          <img src="images/src/assets/screenshot3.png" alt="Screenshot 3" />
-        </div>
-        <button class="arrow right">&#10095;</button>
+    <!-- Image Carousel -->
+    <section class="carousel">
+      <button class="arrow left" id="prevBtn">&#10094;</button>
+      <div class="carousel-images">
+        <img src="images/src/assets/screenshot1.png" class="active" alt="Screenshot 1" />
+        <img src="images/src/assets/screenshot2.png" alt="Screenshot 2" />
+        <img src="images/src/assets/screenshot3.png" alt="Screenshot 3" />
       </div>
+      <button class="arrow right" id="nextBtn">&#10095;</button>
     </section>
 
     <!-- Download Section -->
-    <section id="download" class="section">
-      <h2>Download Now</h2>
-      <p>Play <strong>The Brave Adventurer</strong> on Android devices!</p>
-      <a href="https://github.com/pixel-glitch-dev/the-brave-adventurer/releases/tag/v1.0/TheBraveWarriorAdventure.apk"
-         class="download-btn">
-        <img src="images/src/assets/android-icon.png" alt="Android Icon" class="android-icon" />
+    <section class="download-section">
+      <a
+        href="https://github.com/pixel-glitch-dev/the-brave-adventurer/releases/download/v1.0/TheBraveAdventurer.apk"
+        class="download-btn"
+      >
+        <img
+          src="images/src/assets/android-icon.png"
+          alt="Android Icon"
+          class="android-icon"
+        />
         Download for Android
       </a>
     </section>
 
-    <!-- Info Section -->
-    <section class="info-section">
-      <div id="about" class="info-box">
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-left">
         <h3>About Us</h3>
         <p>
-          We are <strong>Pixel Glitch Dev</strong> — an indie team crafting retro-style pixel games that capture the
-          heart of adventure and creativity.
+          Pixel Glitch Dev creates adventurous and nostalgic indie games full of creativity and challenge.
         </p>
       </div>
-      <div id="contact" class="info-box">
-        <h3>Contact</h3>
-        <p>Have a quest for us?</p>
-        <a href="mailto:pixelglitchdevv@gmail.com" class="email">pixelglitchdevv@gmail.com</a>
-      </div>
-    </section>
 
-    <footer>
-      <p>&copy; 2025 Pixel Glitch Dev. All rights reserved.</p>
+      <div class="footer-right">
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:pixelglitchdevv@gmail.com">pixelglitchdevv@gmail.com</a></p>
+      </div>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
