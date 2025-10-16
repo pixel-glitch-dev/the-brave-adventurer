@@ -1,35 +1,22 @@
-const slides = document.querySelector(".slides");
-const images = document.querySelectorAll(".slides img");
-const nextBtn = document.querySelector(".next");
-const prevBtn = document.querySelector(".prev");
+const carousel = document.querySelector(".carousel");
+const images = document.querySelectorAll(".carousel img");
+const prev = document.querySelector(".arrow.left");
+const next = document.querySelector(".arrow.right");
 
 let index = 0;
 
-function updateSlide() {
-  slides.style.transform = `translateX(-${index * 100}%)`;
+function showSlide(i) {
+  index = (i + images.length) % images.length;
+  carousel.style.transform = `translateX(-${index * 100}%)`;
 }
 
-nextBtn.addEventListener("click", () => {
-  index = (index + 1) % images.length;
-  updateSlide();
-});
+next.addEventListener("click", () => showSlide(index + 1));
+prev.addEventListener("click", () => showSlide(index - 1));
 
-prevBtn.addEventListener("click", () => {
-  index = (index - 1 + images.length) % images.length;
-  updateSlide();
-});
-
-/* Swipe support */
 let startX = 0;
-slides.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX));
-slides.addEventListener("touchend", (e) => {
-  const endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50) nextBtn.click(); // swipe left
-  if (endX - startX > 50) prevBtn.click(); // swipe right
+carousel.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+carousel.addEventListener("touchend", e => {
+  const diff = e.changedTouches[0].clientX - startX;
+  if (diff > 50) showSlide(index - 1);
+  else if (diff < -50) showSlide(index + 1);
 });
-
-/* Optional: Auto-slide every 5s */
-setInterval(() => {
-  index = (index + 1) % images.length;
-  updateSlide();
-}, 5000);
