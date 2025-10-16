@@ -5,7 +5,7 @@
 }
 
 body {
-  background: #111;
+  background: #0e0e0e;
   color: white;
   font-family: 'Poppins', sans-serif;
   display: flex;
@@ -28,15 +28,18 @@ h1 {
 .slider {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  max-width: 600px;
   overflow: hidden;
-  border-radius: 10px;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .slide-container {
-  width: 100%;
+  width: 90%;
   overflow: hidden;
+  border-radius: 10px;
 }
 
 .slides {
@@ -46,11 +49,12 @@ h1 {
 
 .slides img {
   width: 100%;
-  flex-shrink: 0;
   border-radius: 10px;
+  flex-shrink: 0;
+  object-fit: cover;
 }
 
-/* Arrows */
+/* Arrows (side by side with image) */
 .nav {
   position: absolute;
   top: 50%;
@@ -58,33 +62,46 @@ h1 {
   background: rgba(0, 0, 0, 0.6);
   color: white;
   border: none;
-  padding: 0.6rem 1rem;
+  padding: 0.5rem 0.8rem;
   cursor: pointer;
   border-radius: 50%;
   font-size: 1.5rem;
   z-index: 10;
+  transition: background 0.2s ease;
 }
 
 .prev {
-  left: 10px;
+  left: 5%;
 }
 
 .next {
-  right: 10px;
+  right: 5%;
 }
 
 .nav:hover {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* 📱 Mobile support */
+/* Mobile adjustments */
 @media (max-width: 600px) {
   h1 {
     font-size: 1.3rem;
   }
 
+  .slider {
+    max-width: 90%;
+  }
+
   .nav {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0.4rem 0.6rem;
+  }
+
+  .prev {
+    left: 2%;
+  }
+
+  .next {
+    right: 2%;
   }
 }
