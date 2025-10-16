@@ -117,8 +117,62 @@ header {
   margin-right: 8px;
 }
 
+/* Info Section (About + Contact side by side) */
+.info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #3b2a18;
+  padding: 2rem 1rem;
+  margin-top: 2rem;
+  border-top: 2px solid #ffd700;
+}
+
+.info-box {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+  text-align: left;
+  margin: 0.5rem 1rem;
+}
+
+.info-box h3 {
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+}
+
+.info-box p,
+.info-box a {
+  color: #f5d77a;
+  font-size: 0.9rem;
+}
+
+.email {
+  text-decoration: none;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.email:hover {
+  text-decoration: underline;
+}
+
 footer {
   background-color: #3b2a18;
   padding: 1rem;
-  margin-top: 2rem;
+  margin-top: 0;
+  border-top: 1px solid #5a3d1a;
+  color: #f5d77a;
+  font-size: 0.9rem;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .info-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .info-box {
+    text-align: center;
+  }
 }
