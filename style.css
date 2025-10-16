@@ -1,10 +1,11 @@
-/* General */
+/* General Style */
 body {
   margin: 0;
   font-family: "Trebuchet MS", sans-serif;
   background: linear-gradient(180deg, #2a1d0d, #3b2b12);
   color: #f6d67a;
   text-align: center;
+  overflow-x: hidden;
 }
 
 /* Title */
@@ -13,48 +14,55 @@ body {
   font-size: 2.5rem;
   color: #ffd700;
   text-shadow: 0 0 15px #ffcc33, 0 0 30px #ff9900;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ffcc33, 0 0 20px #ff9900;
+  }
+  to {
+    text-shadow: 0 0 25px #ffd700, 0 0 50px #ffcc33;
+  }
 }
 
 /* Carousel */
 .carousel {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 40px auto;
-  width: 90%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 700px;
+  margin: 30px auto;
   overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 0 25px #000;
 }
 
 .carousel-images {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.6s ease-in-out;
 }
 
 .carousel-images img {
   width: 100%;
-  max-height: 320px;
+  height: auto;
+  border-radius: 14px;
   object-fit: cover;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #000;
-  flex-shrink: 0;
 }
 
 /* Arrows */
 .arrow {
-  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.6);
   border: none;
   color: #ffd700;
   font-size: 2rem;
   cursor: pointer;
   padding: 8px 12px;
   border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  transition: 0.3s;
-  z-index: 5;
+  transition: background 0.3s;
+  z-index: 10;
 }
 
 .arrow:hover {
@@ -62,11 +70,11 @@ body {
 }
 
 .left {
-  left: 15px;
+  left: 10px;
 }
 
 .right {
-  right: 15px;
+  right: 10px;
 }
 
 /* Download Section */
@@ -95,8 +103,8 @@ body {
 }
 
 .android-icon {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
 }
 
 /* Footer */
@@ -105,7 +113,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 20px 30px;
+  padding: 25px 40px;
   flex-wrap: wrap;
   color: #fff6c2;
 }
@@ -130,10 +138,14 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Mobile Support */
-@media (max-width: 600px) {
+/* Responsive for Mobile */
+@media (max-width: 768px) {
   .carousel {
-    max-width: 95%;
+    width: 95%;
+  }
+
+  .carousel-images img {
+    max-height: 300px;
   }
 
   .download-btn {
@@ -149,5 +161,6 @@ footer a:hover {
   .footer-left,
   .footer-right {
     width: 100%;
+    margin: 10px 0;
   }
 }

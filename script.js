@@ -1,6 +1,7 @@
 const images = document.querySelectorAll(".carousel-images img");
 const prevBtn = document.getElementById("prevBtn");
 const nextBtn = document.getElementById("nextBtn");
+const carouselImages = document.querySelector(".carousel-images");
 
 let index = 0;
 
@@ -11,21 +12,32 @@ function showImage(i) {
   else index = i;
 
   const offset = -index * 100;
-  document.querySelector(".carousel-images").style.transform = `translateX(${offset}%)`;
+  carouselImages.style.transform = `translateX(${offset}%)`;
 }
 
-// Button controls
+// Click controls
 prevBtn.addEventListener("click", () => showImage(index - 1));
 nextBtn.addEventListener("click", () => showImage(index + 1));
 
-// Swipe support
+// Swipe controls
 let startX = 0;
-document.querySelector(".carousel").addEventListener("touchstart", (e) => {
+
+carouselImages.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
 });
 
-document.querySelector(".carousel").addEventListener("touchend", (e) => {
+carouselImages.addEventListener("touchend", (e) => {
   const endX = e.changedTouches[0].clientX;
   if (startX - endX > 50) showImage(index + 1);
-  if (endX - startX > 50) showImage(index - 1);
+  else if (endX - startX > 50) showImage(index - 1);
+});
+
+// Auto slide every 7 seconds
+setInterval(() => {
+  showImage(index + 1);
+}, 7000);
+
+// Resize handler (keeps images scaled correctly)
+window.addEventListener("resize", () => {
+  carouselImages.style.transform = `translateX(${-index * 100}%)`;
 });
