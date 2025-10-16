@@ -1,39 +1,23 @@
-const slides = document.querySelectorAll(".slides img");
-const prevBtn = document.getElementById("prev");
-const nextBtn = document.getElementById("next");
+const slides = document.querySelector(".slides");
+const totalSlides = document.querySelectorAll(".slides img").length;
+const next = document.querySelector(".next");
+const prev = document.querySelector(".prev");
 
-let currentIndex = 0;
+let index = 0;
 
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-  });
+function showSlide() {
+  slides.style.transform = `translateX(${-index * 100}%)`;
 }
 
-prevBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-  showSlide(currentIndex);
+next.addEventListener("click", () => {
+  index = (index + 1) % totalSlides;
+  showSlide();
 });
 
-nextBtn.addEventListener("click", () => {
-  currentIndex = (currentIndex + 1) % slides.length;
-  showSlide(currentIndex);
+prev.addEventListener("click", () => {
+  index = (index - 1 + totalSlides) % totalSlides;
+  showSlide();
 });
 
-/* Swipe Support for Mobile */
-let startX = 0;
-document.querySelector(".slider").addEventListener("touchstart", (e) => {
-  startX = e.touches[0].clientX;
-});
-
-document.querySelector(".slider").addEventListener("touchend", (e) => {
-  const endX = e.changedTouches[0].clientX;
-  if (startX - endX > 50) {
-    // swipe left
-    currentIndex = (currentIndex + 1) % slides.length;
-  } else if (endX - startX > 50) {
-    // swipe right
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-  }
-  showSlide(currentIndex);
-});
+// Resize fix for mobile
+window.addEventListener("resize", showSlide);
