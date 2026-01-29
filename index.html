@@ -4,337 +4,96 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Brave Adventurer - Report Mockup</title>
-  <style>
-    /* === Base Layout === */
-    body {
-      background: linear-gradient(to bottom, #2b1807, #1a0d05);
-      color: #f8e9b0;
-      font-family: "Trebuchet MS", sans-serif;
-      margin: 0;
-      text-align: center;
-      overflow-x: hidden;
-    }
-
-    /* === Header === */
-    header {
-      padding: 3vh 0 2vh;
-      background: #1a0d05;
-      box-shadow: 0 0 20px #b8860b;
-    }
-
-    .title-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    .title {
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
-      color: #ffd700;
-      text-shadow: 0 0 15px #ffcc33, 0 0 25px #ffb300;
-      letter-spacing: 2px;
-    }
-
-    .shield {
-      width: clamp(35px, 6vw, 55px);
-      filter: drop-shadow(0 0 8px #ffd700);
-    }
-
-    /* === Description === */
-    .description {
-      margin: 4vh auto 3vh;
-      max-width: 90%;
-      color: #ffefb0;
-      line-height: 1.7;
-      padding: 0 5vw;
-    }
-
-    .description h2 {
-      color: #ffd700;
-      text-shadow: 0 0 15px #ffcc33;
-      margin-bottom: 0.8rem;
-      font-size: clamp(1.3rem, 4vw, 2rem);
-    }
-
-    /* === Carousel === */
-    .carousel {
-      position: relative;
-      width: 90%;
-      max-width: 700px;
-      margin: 5vh auto;
-      overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 0 30px #b8860b;
-      background: radial-gradient(circle, #2e1a07 0%, #1a0d05 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .carousel-images {
-      display: flex;
-      transition: transform 0.6s ease-in-out;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-    }
-
-    .carousel-images img {
-      flex: 0 0 100%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0.3;
-      transform: scale(0.92);
-      transition: all 0.6s ease-in-out;
-      border-radius: 10px;
-    }
-
-    .carousel-images img.active {
-      opacity: 1;
-      transform: scale(1);
-      filter: brightness(105%);
-    }
-
-    .arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.6);
-      border: none;
-      color: #ffd700;
-      font-size: clamp(1.3rem, 4vw, 2rem);
-      cursor: pointer;
-      border-radius: 10px;
-      width: clamp(35px, 8vw, 50px);
-      height: clamp(35px, 8vw, 50px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 10px #ffcc33;
-      z-index: 5;
-    }
-
-    .arrow:hover {
-      background-color: rgba(255, 215, 0, 0.7);
-      color: #1a0d05;
-    }
-
-    .arrow.left { left: 10px; }
-    .arrow.right { right: 10px; }
-
-    /* === Announcements === */
-    .announcements {
-      margin: 5vh auto;
-      max-width: 700px;
-      padding: 20px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 10px;
-      box-shadow: 0 0 20px #ffcc33;
-      text-align: left;
-    }
-
-    .announcements h2 {
-      color: #ffd700;
-      text-shadow: 0 0 15px #ffcc33;
-      margin-bottom: 1rem;
-    }
-
-    .announcements ul {
-      list-style: none;
-      padding-left: 0;
-      color: #ffefb0;
-    }
-
-    .announcements ul li {
-      padding: 8px 0;
-      border-bottom: 1px solid #b8860b;
-    }
-
-    /* === Download Buttons === */
-    .download-section-report {
-      margin: 5vh auto;
-      text-align: center;
-    }
-
-    .download-section-report h2 {
-      color: #ffd700;
-      text-shadow: 0 0 15px #ffcc33;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .report-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-    }
-
-    .download-btn-demo,
-    .download-btn-full {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 30px;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 1.2rem;
-      text-decoration: none;
-      color: #1a0d05;
-      box-shadow: 0 0 25px #ffcc33;
-      transition: all 0.3s ease-in-out;
-      background: linear-gradient(to bottom, #ffcc33, #b8860b);
-    }
-
-    .download-btn-demo:hover,
-    .download-btn-full:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 40px #ffcc33;
-      background: linear-gradient(to bottom, #ffd700, #b8860b);
-    }
-
-    .android-icon {
-      width: 28px;
-      height: auto;
-    }
-
-    /* === Footer === */
-    footer {
-      background: #1a0d05;
-      color: #ffefb0;
-      padding: 5vh 3vw;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 2rem;
-      text-align: left;
-    }
-
-    .footer-left,
-    .footer-right {
-      width: 45%;
-      min-width: 250px;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-      line-height: 1.6;
-    }
-
-    .footer-left h3,
-    .footer-right h3 {
-      color: #ffd700;
-      text-shadow: 0 0 10px #ffcc33;
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-bottom {
-      width: 100%;
-      text-align: center;
-      margin-top: 2rem;
-      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
-      color: #ffcc66;
-      border-top: 1px solid #b8860b;
-      padding-top: 1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <!-- Header -->
+
+  <!-- ===== HEADER ===== -->
   <header>
     <div class="title-container">
-      <img src="images/src/assets/shield.png" class="shield shield-left" alt="shield"/>
+      <img src="images/src/assets/shield.png" class="shield" alt="shield">
       <h1 class="title">THE BRAVE ADVENTURER</h1>
-      <img src="images/src/assets/shield.png" class="shield shield-right" alt="shield"/>
+      <img src="images/src/assets/shield.png" class="shield" alt="shield">
     </div>
   </header>
 
-  <!-- Description -->
+  <!-- ===== DESCRIPTION ===== -->
   <section class="description">
     <h2>Embark on an Epic 2D Pixel Adventure!</h2>
     <p>
-      <strong>The Brave Adventurer</strong> is a thrilling 2D pixel platformer where courage and skill are your
-      greatest weapons. Journey through dangerous dungeons, collect treasures, and battle fierce monsters.
+      <strong>The Brave Adventurer</strong> is a thrilling 2D pixel platformer
+      where courage and skill are your greatest weapons.
+      Explore dangerous dungeons, battle monsters, and collect treasure.
     </p>
+
+    <!-- Announcement Button -->
+    <a href="#announcements" class="announcement-btn">
+      Announcements
+    </a>
   </section>
 
-  <!-- Carousel -->
+  <!-- ===== CAROUSEL ===== -->
   <section class="carousel">
     <button class="arrow left" id="prevBtn">&#10094;</button>
+
     <div class="carousel-images">
-      <img src="images/src/assets/screenshot1.png" class="active" alt="Screenshot 1"/>
-      <img src="images/src/assets/screenshot2.png" alt="Screenshot 2"/>
-      <img src="images/src/assets/screenshot3.png" alt="Screenshot 3"/>
+      <img src="images/src/assets/screenshot1.png" class="active" alt="Screenshot 1">
+      <img src="images/src/assets/screenshot2.png" alt="Screenshot 2">
+      <img src="images/src/assets/screenshot3.png" alt="Screenshot 3">
     </div>
+
     <button class="arrow right" id="nextBtn">&#10095;</button>
   </section>
 
-  <!-- Announcements -->
-  <section class="announcements">
+  <!-- ===== ANNOUNCEMENTS PAGE ===== -->
+  <section id="announcements" class="announcements-section">
     <h2>Latest Announcements</h2>
     <ul>
-      <li>2026-01-19: First public demo released!</li>
-      <li>2026-01-20: Added new dungeon levels.</li>
-      <li>2026-01-22: Full version now available for $0.5</li>
+      <li>🆕 2026-01-19 — First public demo released</li>
+      <li>⚔️ 2026-01-20 — New dungeon levels added</li>
+      <li>💰 2026-01-22 — Full version available for $0.5</li>
     </ul>
   </section>
 
-  <!-- Download Buttons -->
+  <!-- ===== DOWNLOAD SECTION ===== -->
   <section class="download-section-report">
     <h2>Get the Game</h2>
+
     <div class="report-buttons">
-      <a href="https://github.com/pixel-glitch-dev/the-brave-adventurer/releases/download/v1.2.1/TheBraveWarriorAdventure1.2.apk" class="download-btn-demo">
-        <img src="images/src/assets/android-icon.png" alt="Android" class="android-icon"/>
+      <a href="https://github.com/pixel-glitch-dev/the-brave-adventurer/releases/download/v1.2.1/TheBraveWarriorAdventure1.2.apk"
+         class="download-btn-demo">
+        <img src="images/src/assets/android-icon.png" class="android-icon" alt="Android">
         Demo Version
       </a>
+
       <a href="#" class="download-btn-full">
-        <img src="images/src/assets/android-icon.png" alt="Android" class="android-icon"/>
-        Full Version - $0.5
+        <img src="images/src/assets/android-icon.png" class="android-icon" alt="Android">
+        Full Version – $0.5
       </a>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ===== FOOTER ===== -->
   <footer>
     <div class="footer-left">
       <h3>About Us</h3>
-      <p>Pixel Glitch Dev creates adventurous and nostalgic indie games full of creativity and challenge.</p>
+      <p>
+        Pixel Glitch Dev creates nostalgic indie games inspired by classic
+        adventures and modern creativity.
+      </p>
     </div>
+
     <div class="footer-right">
       <h3>Contact</h3>
       <p>Email: <a href="mailto:pixelglitchdevv@gmail.com">pixelglitchdevv@gmail.com</a></p>
     </div>
+
     <div class="footer-bottom">
-      <p>© 2025 Pixel Glitch Dev. All rights reserved.</p>
+      © 2025 Pixel Glitch Dev. All rights reserved.
     </div>
   </footer>
 
-  <!-- Carousel Script -->
-  <script>
-    const images = document.querySelectorAll('.carousel-images img');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const carousel = document.querySelector('.carousel-images');
-    let index = 0;
-
-    function showImage(i){
-      carousel.style.transform = `translateX(${-i*100}%)`;
-      images.forEach((img, idx)=> img.classList.toggle('active', idx===i));
-    }
-
-    nextBtn.addEventListener('click', ()=>{ index=(index+1)%images.length; showImage(index); });
-    prevBtn.addEventListener('click', ()=>{ index=(index-1+images.length)%images.length; showImage(index); });
-
-    let startX=0;
-    document.querySelector('.carousel').addEventListener('touchstart', e=>startX=e.touches[0].clientX);
-    document.querySelector('.carousel').addEventListener('touchend', e=>{
-      let endX=e.changedTouches[0].clientX;
-      if(startX-endX>50) nextBtn.click();
-      else if(endX-startX>50) prevBtn.click();
-    });
-
-    showImage(index);
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
