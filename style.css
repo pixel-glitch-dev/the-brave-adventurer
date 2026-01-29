@@ -1,4 +1,4 @@
-/* === General Styling === */
+/* === Base Layout === */
 body {
   background: linear-gradient(to bottom, #2b1807, #1a0d05);
   color: #f8e9b0;
@@ -10,7 +10,7 @@ body {
 
 /* === Header === */
 header {
-  padding: 2rem 0 1.5rem;
+  padding: 3vh 0 2vh;
   background: #1a0d05;
   box-shadow: 0 0 20px #b8860b;
 }
@@ -20,52 +20,49 @@ header {
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
   color: #ffd700;
   text-shadow: 0 0 15px #ffcc33, 0 0 25px #ffb300;
   letter-spacing: 2px;
 }
 
-/* === Sword Animation === */
 .sword {
-  width: 45px;
+  width: clamp(35px, 6vw, 55px);
   animation: swing 2s infinite ease-in-out;
   filter: drop-shadow(0 0 8px #ffd700);
 }
 
 @keyframes swing {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(10deg);
-  }
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
 }
 
 /* === Description === */
 .description {
-  margin: 3rem auto 2.5rem;
-  max-width: 800px;
+  margin: 4vh auto 3vh;
+  max-width: 90%;
   color: #ffefb0;
   line-height: 1.7;
-  padding: 0 1.5rem;
+  padding: 0 5vw;
 }
 
 .description h2 {
   color: #ffd700;
   text-shadow: 0 0 15px #ffcc33;
   margin-bottom: 0.8rem;
+  font-size: clamp(1.3rem, 4vw, 2rem);
 }
 
 /* === Carousel === */
 .carousel {
   position: relative;
-  width: 100%;
+  width: 90%;
   max-width: 700px;
-  margin: 3rem auto;
+  margin: 5vh auto;
   overflow: hidden;
   border-radius: 15px;
   box-shadow: 0 0 30px #b8860b;
@@ -79,7 +76,7 @@ header {
   display: flex;
   transition: transform 0.6s ease-in-out;
   width: 100%;
-  height: 380px;
+  aspect-ratio: 16 / 9;
 }
 
 .carousel-images img {
@@ -107,11 +104,11 @@ header {
   background-color: rgba(0, 0, 0, 0.6);
   border: none;
   color: #ffd700;
-  font-size: 2rem;
+  font-size: clamp(1.3rem, 4vw, 2rem);
   cursor: pointer;
   border-radius: 10px;
-  width: 45px;
-  height: 45px;
+  width: clamp(35px, 8vw, 50px);
+  height: clamp(35px, 8vw, 50px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -125,18 +122,13 @@ header {
   color: #1a0d05;
 }
 
-.arrow.left {
-  left: 10px;
-}
-
-.arrow.right {
-  right: 10px;
-}
+.arrow.left { left: 10px; }
+.arrow.right { right: 10px; }
 
 /* === Download Section === */
 .download-section {
-  margin: 4rem auto 4.5rem; /* more breathing room below */
-  padding-top: 2rem; /* space above download button */
+  margin: 6vh auto 6vh;
+  padding-top: 3vh;
 }
 
 .download-btn {
@@ -149,7 +141,7 @@ header {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
   box-shadow: 0 0 25px #ffcc33;
   transition: all 0.3s ease-in-out;
 }
@@ -160,15 +152,15 @@ header {
 }
 
 .android-icon {
-  width: 28px;
-  height: 28px;
+  width: clamp(24px, 6vw, 30px);
+  height: auto;
 }
 
 /* === Footer === */
 footer {
   background: #1a0d05;
   color: #ffefb0;
-  padding: 3rem 2rem;
+  padding: 5vh 3vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -180,7 +172,7 @@ footer {
 .footer-right {
   width: 45%;
   min-width: 250px;
-  font-size: 0.85rem;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
   line-height: 1.6;
 }
 
@@ -188,7 +180,7 @@ footer {
 .footer-right h3 {
   color: #ffd700;
   text-shadow: 0 0 10px #ffcc33;
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   margin-bottom: 0.5rem;
 }
 
@@ -196,41 +188,81 @@ footer {
   width: 100%;
   text-align: center;
   margin-top: 2rem;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2.5vw, 0.9rem);
   color: #ffcc66;
   border-top: 1px solid #b8860b;
   padding-top: 1rem;
 }
 
-/* === Responsive === */
+/* === Responsive (Portrait & Small Screens) === */
 @media (max-width: 768px) {
+  .title-container {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
   .carousel {
-    max-width: 95%;
-    margin: 2rem auto;
+    width: 95%;
+    margin: 4vh auto;
   }
 
   .carousel-images {
-    height: 250px;
-  }
-
-  .arrow {
-    font-size: 1.4rem;
-    width: 38px;
-    height: 38px;
+    aspect-ratio: 4 / 3;
   }
 
   footer {
     flex-direction: column;
+    align-items: center;
     text-align: center;
   }
 
-  .footer-left,
-  .footer-right {
+  .footer-left, .footer-right {
     width: 100%;
   }
 
   .download-section {
-    margin: 3rem 0;
-    padding-top: 1.5rem;
+    margin: 5vh 0;
+    padding-top: 2vh;
   }
+}
+/* === Announcements Section === */
+.announcements {
+  margin: 5vh auto;
+  max-width: 700px;
+  padding: 20px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 10px;
+  box-shadow: 0 0 20px #ffcc33;
+  text-align: left;
+}
+
+.announcements h2 {
+  color: #ffd700;
+  text-shadow: 0 0 15px #ffcc33;
+  margin-bottom: 1rem;
+}
+
+.announcements ul {
+  list-style: none;
+  padding-left: 0;
+  color: #ffefb0;
+}
+
+.announcements ul li {
+  padding: 8px 0;
+  border-bottom: 1px solid #b8860b;
+}
+
+/* === Download Buttons Section (Demo + Full Version) === */
+#releaseButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+#releaseButtons .download-btn {
+  min-width: 150px;
+  text-align: center;
 }
